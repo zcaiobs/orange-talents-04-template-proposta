@@ -1,7 +1,6 @@
 package br.com.zupacademy.caio.proposta.nova_proposta;
 
 import br.com.zupacademy.caio.proposta.validator.Documento;
-import br.com.zupacademy.caio.proposta.validator.ValorUnico;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -10,7 +9,7 @@ import java.math.BigDecimal;
 
 public class PropostaRequest {
 
-    @NotBlank @Documento @ValorUnico(domain = Proposta.class, field = "documento")
+    @NotBlank @Documento
     private final String documento;
     @NotBlank @Email
     private final String email;
@@ -50,12 +49,10 @@ public class PropostaRequest {
         this.salario = salario;
     }
 
-    public Proposta toProposta(CartoesClient cartoesClient) {
-
-
+    public Proposta toProposta() {
         return new Proposta(
                 this.documento, this.email,
                 this.nome, this.endereco,
-                this.salario, Status.ELEGIVEL);
+                this.salario);
     }
 }

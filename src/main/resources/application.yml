@@ -13,6 +13,3 @@ server:
   error:
     include-stacktrace: never
 
-feign:
-  httpclient:
-    max-connections: 1
