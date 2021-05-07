@@ -1,6 +1,7 @@
 package br.com.zupacademy.caio.proposta.nova_proposta;
 
 import br.com.zupacademy.caio.proposta.validator.Documento;
+import br.com.zupacademy.caio.proposta.validator.ValorUnico;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -9,7 +10,7 @@ import java.math.BigDecimal;
 
 public class PropostaRequest {
 
-    @NotBlank @Documento
+    @NotBlank @Documento @ValorUnico(domain = Proposta.class, field = "documento")
     private final String documento;
     @NotBlank @Email
     private final String email;
