@@ -1,0 +1,13 @@
+services:
+  mysql:
+    image: mysql
+    container_name: proposta-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+    - 3306:3306
+    volumes:
+    - proposta_db:/var/lib/mysql
+
+volumes:
+  proposta_db:
