@@ -14,18 +14,21 @@ public class Proposta {
     private String nome;
     private String endereco;
     private BigDecimal salario;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public Long getId() {
         return id;
     }
 
     public Proposta(String documento, String email, String nome,
-                    String endereco, BigDecimal salario) {
+                    String endereco, BigDecimal salario, Status status) {
         this.documento = documento;
         this.email = email;
         this.nome = nome;
         this.endereco = endereco;
         this.salario = salario;
+        this.status = status;
     }
 
     public Proposta() {

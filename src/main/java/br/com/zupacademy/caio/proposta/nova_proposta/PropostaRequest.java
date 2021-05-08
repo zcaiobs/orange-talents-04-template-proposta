@@ -54,6 +54,6 @@ public class PropostaRequest {
         return new Proposta(
                 this.documento, this.email,
                 this.nome, this.endereco,
-                this.salario);
+                this.salario, Status.NAO_ELEGIVEL);
     }
 }
