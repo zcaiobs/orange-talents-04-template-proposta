@@ -15,14 +15,44 @@ public class Proposta {
     private String endereco;
     private BigDecimal salario;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private PropostaStatus status;
+    private String cartao;
 
     public Long getId() {
         return id;
     }
 
+    public String getDocumento() {
+        return documento;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
+    public PropostaStatus getStatus() {
+        return status;
+    }
+
+    public String getCartao() {
+        return cartao;
+    }
+
     public Proposta(String documento, String email, String nome,
-                    String endereco, BigDecimal salario, Status status) {
+                    String endereco, BigDecimal salario,
+                    PropostaStatus status) {
         this.documento = documento;
         this.email = email;
         this.nome = nome;
@@ -31,6 +61,24 @@ public class Proposta {
         this.status = status;
     }
 
+    public void setCartao(String cartao) {
+        this.cartao = cartao;
+    }
+
     public Proposta() {
+    }
+
+    @Override
+    public String toString() {
+        return "Proposta{" +
+                "id=" + id +
+                ", documento='" + documento + '\'' +
+                ", email='" + email + '\'' +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", salario=" + salario +
+                ", status=" + status +
+                ", cartao='" + cartao + '\'' +
+                '}';
     }
 }

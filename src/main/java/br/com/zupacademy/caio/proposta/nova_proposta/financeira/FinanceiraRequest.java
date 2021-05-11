@@ -1,10 +1,9 @@
-package br.com.zupacademy.caio.proposta.nova_proposta;
+package br.com.zupacademy.caio.proposta.nova_proposta.financeira;
 
-public class FinanceiraResponse {
+public class FinanceiraRequest {
     private final String documento;
     private final String nome;
     private final String idProposta;
-    private final String resultadoSolicitacao;
 
     public String getDocumento() {
         return documento;
@@ -18,14 +17,9 @@ public class FinanceiraResponse {
         return idProposta;
     }
 
-    public String getResultadoSolicitacao() {
-        return resultadoSolicitacao;
-    }
-
-    public FinanceiraResponse(String documento, String nome, String idProposta, String resultadoSolicitacao) {
+    public FinanceiraRequest(String documento, String nome, String idProposta) {
         this.documento = documento;
         this.nome = nome;
         this.idProposta = idProposta;
-        this.resultadoSolicitacao = resultadoSolicitacao;
     }
 }
