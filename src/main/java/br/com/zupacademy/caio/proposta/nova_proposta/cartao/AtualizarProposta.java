@@ -6,23 +6,20 @@ import br.com.zupacademy.caio.proposta.nova_proposta.PropostaStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Component
+public class AtualizarProposta {
 
-@RestController
-@RequestMapping("/api/cartoes")
-public class ConsultarCartaoController {
-
-    Logger log = LoggerFactory.getLogger(ConsultarCartaoController.class);
+    Logger log = LoggerFactory.getLogger(AtualizarProposta.class);
 
     ConsultarCartao consultarCartao;
     PropostaRepository propostaRepository;
 
-    ConsultarCartaoController(ConsultarCartao consultarCartao, PropostaRepository propostaRepository) {
+    AtualizarProposta(ConsultarCartao consultarCartao, PropostaRepository propostaRepository) {
         this.consultarCartao = consultarCartao;
         this.propostaRepository = propostaRepository;
     }
