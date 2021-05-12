@@ -1,12 +1,13 @@
 package br.com.zupacademy.caio.proposta.nova_proposta.cartao;
 
-import br.com.zupacademy.caio.proposta.nova_proposta.Proposta;
-import br.com.zupacademy.caio.proposta.nova_proposta.PropostaRepository;
-import br.com.zupacademy.caio.proposta.nova_proposta.PropostaStatus;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.Proposta;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaRepository;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class AtualizarProposta {
 
     @Scheduled(fixedDelay = 10000)
     public void consultarCartao() {
-        var propostas = propostaRepository.findAllByCartaoIsNullAndAndStatusLike(PropostaStatus.ELEGIVEL)
+        var propostas = propostaRepository.findAllByCartao_NumeroIsNullAndStatusLike(PropostaStatus.ELEGIVEL)
                 .stream().map(this::consultar)
                 .collect(Collectors.toList());
         atualizarPropostas(propostas);
@@ -34,14 +35,15 @@ public class AtualizarProposta {
 
     public void atualizarPropostas(List<Proposta> propostas) {
         if (!(propostas.isEmpty()) && propostas.get(0).getCartao() != null) {
-            propostaRepository.saveAll(propostas);
+             var result = propostaRepository.saveAll(propostas);
             log.info("Número de propostas atualizadas: {}", propostas.size());
         }
     }
 
     public Proposta consultar(Proposta proposta) {
         try {
-            proposta.setCartao(Objects.requireNonNull(consultarCartao.consultar(proposta.getId()).getBody()).getId());
+            var numero = Objects.requireNonNull(consultarCartao.consultar(proposta.getId()).getBody()).getId();
+            proposta.setCartao(new Cartao(numero));
             return proposta;
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex.getCause());

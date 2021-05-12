@@ -1,9 +1,17 @@
 package br.com.zupacademy.caio.proposta.nova_proposta.financeira;
 
+import br.com.zupacademy.caio.proposta.validator.Documento;
+
+import javax.validation.constraints.NotBlank;
+
 public class FinanceiraResponse {
+    @NotBlank @Documento
     private final String documento;
+    @NotBlank
     private final String nome;
+    @NotBlank
     private final String idProposta;
+    @NotBlank
     private final String resultadoSolicitacao;
 
     public String getDocumento() {

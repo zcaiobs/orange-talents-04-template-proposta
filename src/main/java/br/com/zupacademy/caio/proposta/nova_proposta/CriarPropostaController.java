@@ -2,6 +2,9 @@ package br.com.zupacademy.caio.proposta.nova_proposta;
 
 import br.com.zupacademy.caio.proposta.nova_proposta.financeira.ConsultarFinanceira;
 import br.com.zupacademy.caio.proposta.nova_proposta.financeira.FinanceiraRequest;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaRepository;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaRequest;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaStatus;
 import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +41,7 @@ public class CriarPropostaController {
             var result = consultarFinanceira.validar(financeiraRequest);
             if (result.getResultadoSolicitacao().equals("SEM_RESTRICAO")) return PropostaStatus.ELEGIVEL;
         } catch (FeignException ex) {
-            log.error(ex.getMessage(), ex.getCause());
+            log.warn(ex.getMessage(), ex.getCause());
             ex.contentUTF8();
         }
         return PropostaStatus.NAO_ELEGIVEL;

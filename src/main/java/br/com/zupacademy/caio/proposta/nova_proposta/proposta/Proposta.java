@@ -1,4 +1,6 @@
-package br.com.zupacademy.caio.proposta.nova_proposta;
+package br.com.zupacademy.caio.proposta.nova_proposta.proposta;
+
+import br.com.zupacademy.caio.proposta.nova_proposta.cartao.Cartao;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,7 +18,8 @@ public class Proposta {
     private BigDecimal salario;
     @Enumerated(EnumType.STRING)
     private PropostaStatus status;
-    private String cartao;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Cartao cartao;
 
     public Long getId() {
         return id;
@@ -46,7 +49,7 @@ public class Proposta {
         return status;
     }
 
-    public String getCartao() {
+    public Cartao getCartao() {
         return cartao;
     }
 
@@ -61,7 +64,7 @@ public class Proposta {
         this.status = status;
     }
 
-    public void setCartao(String cartao) {
+    public void setCartao(Cartao cartao) {
         this.cartao = cartao;
     }
 

@@ -1,6 +1,8 @@
 package br.com.zupacademy.caio.proposta.nova_proposta;
 
 import br.com.zupacademy.caio.proposta.exception.NotFoundException;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaRepository;
+import br.com.zupacademy.caio.proposta.nova_proposta.proposta.PropostaResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

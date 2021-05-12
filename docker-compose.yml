@@ -10,26 +10,26 @@ services:
     volumes:
     - proposta_db:/var/lib/mysql
 
-  proposta-app:
-    build:
-      dockerfile: Dockerfile
-      context: .
-    image: proposta-app
-    container_name: proposta
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://proposta-app:8080/actuator/health"]
-      interval: 10s
-      timeout: 10s
-    environment:
-      USER: root
-      PASS: root
-      BANCO_DE_DADOS: mysql
-      FINANCEIRA: analise
-      CARTOES: contas
-    ports:
-    - 9000:8080
-    depends_on:
-      - mysql
+#  proposta-app:
+#    build:
+#      dockerfile: Dockerfile
+#      context: .
+#    image: proposta-app
+#    container_name: proposta
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://proposta-app:8080/actuator/health"]
+#      interval: 10s
+#      timeout: 10s
+#    environment:
+#      USER: root
+#      PASS: root
+#      BANCO_DE_DADOS: mysql
+#      FINANCEIRA: analise
+#      CARTOES: contas
+#    ports:
+#    - 9000:8080
+#    depends_on:
+#      - mysql
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:5.2.1"

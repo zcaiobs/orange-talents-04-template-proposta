@@ -1,4 +1,6 @@
-package br.com.zupacademy.caio.proposta.nova_proposta;
+package br.com.zupacademy.caio.proposta.nova_proposta.proposta;
+
+import br.com.zupacademy.caio.proposta.nova_proposta.cartao.Cartao;
 
 import java.math.BigDecimal;
 
@@ -11,7 +13,7 @@ public class PropostaResponse {
     private final String endereco;
     private final BigDecimal salario;
     private final PropostaStatus status;
-    private final String cartao;
+    private final Cartao cartao;
 
     public Long getId() {
         return id;
@@ -41,13 +43,13 @@ public class PropostaResponse {
         return status;
     }
 
-    public String getCartao() {
+    public Cartao getCartao() {
         return cartao;
     }
 
     public PropostaResponse(Long id, String documento, String email,
                             String nome, String endereco, BigDecimal salario,
-                            PropostaStatus status, String cartao) {
+                            PropostaStatus status, Cartao cartao) {
         this.id = id;
         this.documento = documento;
         this.email = email;

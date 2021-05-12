@@ -1,4 +1,4 @@
-package br.com.zupacademy.caio.proposta.nova_proposta;
+package br.com.zupacademy.caio.proposta.nova_proposta.proposta;
 
 import br.com.zupacademy.caio.proposta.validator.Documento;
 import br.com.zupacademy.caio.proposta.validator.ValorUnico;
