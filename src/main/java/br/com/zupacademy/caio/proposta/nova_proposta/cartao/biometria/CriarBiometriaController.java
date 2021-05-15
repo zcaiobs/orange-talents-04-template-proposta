@@ -25,12 +25,12 @@ public class CriarBiometriaController {
         this.biometriaRepository = biometriaRepository;
     }
 
-    @PostMapping("/{cartaoId}")
-    public ResponseEntity<?> criar(@Valid @PathVariable @NotNull  Long cartaoId,
+    @PostMapping("/{idCartao}")
+    public ResponseEntity<?> criar(@Valid @PathVariable @NotNull  Long idCartao,
                                    @Valid @RequestBody BiometriaRequest biometriaRequest,
                                    UriComponentsBuilder uri) {
 
-        var cartao = cartaoRepository.findById(cartaoId);
+        var cartao = cartaoRepository.findById(idCartao);
 
         if(cartao.isPresent()) {
             var biometria = biometriaRepository.save(biometriaRequest.toBiometria());

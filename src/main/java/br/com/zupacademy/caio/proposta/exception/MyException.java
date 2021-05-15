@@ -43,6 +43,6 @@ public class MyException {
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<?> handle(ResponseStatusException exception) {
         return ResponseEntity.unprocessableEntity()
-                .body(List.of(new ExceptionResponse("documento", "valor informado já existe")));
+                .body(List.of(new ExceptionResponse(exception.getReason(), "valor informado já existe")));
     }
 }

@@ -1,7 +1,7 @@
 package br.com.zupacademy.caio.proposta.nova_proposta.cartao;
 
 import br.com.zupacademy.caio.proposta.nova_proposta.cartao.biometria.Biometria;
-
+import br.com.zupacademy.caio.proposta.nova_proposta.cartao.bloqueio.Bloqueio;
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,6 +13,8 @@ public class Cartao {
     private String numero;
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Biometria> biometrias;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Bloqueio bloqueio;
 
     public Long getId() {
         return id;
@@ -24,6 +26,14 @@ public class Cartao {
 
     public Set<Biometria> getBiometrias() {
         return biometrias;
+    }
+
+    public Bloqueio getBloqueio() {
+        return bloqueio;
+    }
+
+    public void setBloqueio(Bloqueio bloqueio) {
+        this.bloqueio = bloqueio;
     }
 
     public Cartao(String numero) {

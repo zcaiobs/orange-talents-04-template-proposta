@@ -1,7 +1,6 @@
 package br.com.zupacademy.caio.proposta.nova_proposta.proposta;
 
 import br.com.zupacademy.caio.proposta.nova_proposta.cartao.Cartao;
-
 import java.math.BigDecimal;
 
 public class PropostaResponse {

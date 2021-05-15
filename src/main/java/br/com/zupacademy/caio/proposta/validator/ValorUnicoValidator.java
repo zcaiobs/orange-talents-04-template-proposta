@@ -29,7 +29,7 @@ public class ValorUnicoValidator implements ConstraintValidator<ValorUnico, Obje
                 .setParameter("value", value)
                 .getResultList()
                 .isEmpty();
-        if (!result) throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
+        if (!result) throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "documento");
         return true;
     }
 }
