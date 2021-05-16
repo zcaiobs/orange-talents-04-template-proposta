@@ -43,7 +43,7 @@ public class AtualizarProposta {
     public Proposta consultar(Proposta proposta) {
         try {
             var numero = Objects.requireNonNull(consultarCartao.consultar(proposta.getId()).getBody()).getId();
-            proposta.setCartao(new Cartao(numero));
+            proposta.setCartao(new Cartao(numero, CartaoStatus.DESBLOQUEADO));
             return proposta;
         } catch (Exception ex) {
             log.error(ex.getMessage(), ex.getCause());

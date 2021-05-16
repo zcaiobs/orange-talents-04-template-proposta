@@ -14,6 +14,7 @@ public class Bloqueio {
     private String ip;
     private String userAgent;
     private Date data;
+    private boolean ativo;
 
     public Long getId() {
         return id;
@@ -31,10 +32,15 @@ public class Bloqueio {
         return data;
     }
 
-    public Bloqueio(String ip, String userAgent, Date data) {
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public Bloqueio(String ip, String userAgent, Date data, boolean ativo) {
         this.ip = ip;
         this.userAgent = userAgent;
         this.data = data;
+        this.ativo = ativo;
     }
 
     public Bloqueio() {

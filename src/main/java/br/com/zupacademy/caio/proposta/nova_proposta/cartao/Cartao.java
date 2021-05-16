@@ -15,6 +15,8 @@ public class Cartao {
     private Set<Biometria> biometrias;
     @OneToOne(cascade = CascadeType.MERGE)
     private Bloqueio bloqueio;
+    @Enumerated(EnumType.STRING)
+    private CartaoStatus status;
 
     public Long getId() {
         return id;
@@ -32,12 +34,21 @@ public class Cartao {
         return bloqueio;
     }
 
+    public CartaoStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(CartaoStatus status) {
+        this.status = status;
+    }
+
     public void setBloqueio(Bloqueio bloqueio) {
         this.bloqueio = bloqueio;
     }
 
-    public Cartao(String numero) {
+    public Cartao(String numero, CartaoStatus status) {
         this.numero = numero;
+        this.status = status;
     }
 
     public Cartao() {
