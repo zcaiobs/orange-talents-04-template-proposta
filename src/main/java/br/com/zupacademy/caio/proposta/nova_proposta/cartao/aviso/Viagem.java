@@ -32,4 +32,17 @@ public class Viagem {
     public Viagem() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Viagem{" +
+                "id=" + id +
+                ", idCartao=" + idCartao +
+                ", destino='" + destino + '\'' +
+                ", termino=" + termino +
+                ", created=" + created +
+                ", ip='" + ip + '\'' +
+                ", userAgent='" + userAgent + '\'' +
+                '}';
+    }
 }
