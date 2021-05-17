@@ -24,7 +24,17 @@ management:
     health:
       show-details: always
       enabled: true
+    prometheus:
+      enabled: true
   endpoints:
     web:
       exposure:
-        include: "health,info"
+        include: "health, prometheus, metrics"
+  metrics:
+    web:
+      server:
+        request:
+          metric-name: "proposta.request"
+    tags:
+      aplicacao: ${NOME_DA_APLICACAO:serviço de proposta}
+      ambiente: ${AMBIENTE:desenvolvimento}
