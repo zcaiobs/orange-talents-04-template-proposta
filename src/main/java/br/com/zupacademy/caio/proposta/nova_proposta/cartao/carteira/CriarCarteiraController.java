@@ -38,11 +38,14 @@ public class CriarCarteiraController {
             if (isValid.isEmpty()) {
                 var id = sincronizarCarteira(card, carteiraRequest);
                 if (id != null) {
+                    log.info("Carteira associada. id - {}", id);
                     return ResponseEntity.created(uri.path("/api/carteiras/{id}").buildAndExpand(id).toUri()).build();
                 }
             }
+            log.warn("Não foi possível associar esta carteira.");
             return ResponseEntity.unprocessableEntity().build();
         }
+        log.error("Cartão não encontrado.");
         return ResponseEntity.notFound().build();
     }
 
