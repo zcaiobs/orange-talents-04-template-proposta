@@ -26,8 +26,9 @@ services:
 #      BANCO_DE_DADOS: mysql
 #      FINANCEIRA: analise
 #      CARTOES: contas
+#      JAEGER_ENDPOINT: http://jaeger:14268/api/traces
 #    ports:
-#    - 9000:8080
+#    - 8080:8080
 #    depends_on:
 #      - mysql
 
@@ -140,6 +141,7 @@ services:
   prometheus:
     image: prom/prometheus
     volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-volume:/etc/prometheus/
     network_mode: bridge
     ports:
