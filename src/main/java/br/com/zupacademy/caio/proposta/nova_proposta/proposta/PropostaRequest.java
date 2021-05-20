@@ -1,7 +1,11 @@
 package br.com.zupacademy.caio.proposta.nova_proposta.proposta;
 
+import br.com.zupacademy.caio.proposta.util.MyEncryptors;
 import br.com.zupacademy.caio.proposta.validator.Documento;
 import br.com.zupacademy.caio.proposta.validator.ValorUnico;
+import org.springframework.cloud.context.encrypt.EncryptorFactory;
+import org.springframework.security.crypto.encrypt.Encryptors;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -52,7 +56,7 @@ public class PropostaRequest {
 
     public Proposta toProposta() {
         return new Proposta(
-                this.documento, this.email,
+                MyEncryptors.encode(this.documento), this.email,
                 this.nome, this.endereco,
                 this.salario, PropostaStatus.NAO_ELEGIVEL);
     }
