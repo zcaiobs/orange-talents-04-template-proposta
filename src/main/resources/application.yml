@@ -38,3 +38,14 @@ management:
     tags:
       aplicacao: ${NOME_DA_APLICACAO:serviço de proposta}
       ambiente: ${AMBIENTE:desenvolvimento}
+
+opentracing:
+  jaeger:
+    enabled: true
+    http-sender:
+      url: ${JAEGER_ENDPOINT:http://localhost:14268/api/traces}
+    service-name: ${spring.application.name}
+    probabilistic-sampler:
+      sampling-rate: 1
+
+
